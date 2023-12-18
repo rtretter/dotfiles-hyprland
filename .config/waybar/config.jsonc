@@ -1,0 +1,101 @@
+{
+    "layer": "top",
+    "position": "top", 
+    "height": 24,
+    
+    "modules-left":   ["custom/power", "disk", "memory", "temperature#cpu", "packages"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right":  ["wlr/taskbar", "hyprland/language", "clock#time", "group/group-tray"],
+    
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 18,
+        "icon-theme": "Numix-Circle",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "ignore-list": [
+           "kitty"
+        ]
+    },
+
+    "group/group-tray": {
+      "orientation": "inherit",
+      "modules": [
+            "tray",
+            "custom/tray-icon"
+      ]
+    },
+    
+    "custom/power": {
+      "tooltip": false,
+      "format": "<span size='14000' foreground='#d79921'>⏻</span>",
+      "on-click": "wlogout -b 2"
+    },
+  
+    "custom/tray-icon": {
+      "tooltip": false,
+      "format": "<span size='14000'>󰍞</span>"
+    },
+  
+    "temperature#cpu": {
+      "interval": 1,
+      "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input",
+      "critical-threshold": 80,
+      "format": "<span foreground='#d79921'>  </span>{temperatureC}°C",
+      "format-critical": "<span foreground='#cc241d'>  </span>{temperatureC}°C",
+      "tooltip": false
+    },
+  
+    "hyprland/language": {
+      "format": "<span size='9000' foreground='#d79921'>  </span>{}",
+      "format-en": "ENG",
+      "format-ru": "RU",
+      "format-de": "DE",
+      "tooltip": false
+    },
+  
+    "disk": {
+      "interval": 120,
+      "format": "<span foreground='#d79921'>   </span>{used}"
+    },
+  
+    "memory": {
+      "interval": 1,
+      "format": "<span foreground='#d79921'>   </span>{used} GB",
+      "max-length": 20,
+      "tooltip": false
+    },
+  
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "sort-by-numbers": false,
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10"
+        }
+    },
+  
+    "tray": {
+      "icon-size": 18,
+      "spacing": 10,
+      "show-passive-items": true
+    },
+  
+    "clock#time": {
+      "interval": 1,
+      "format": "<span foreground='#d79921' size='10000'> </span>{:%H:%M   <span foreground='#d79921' size='10000'> </span>%d.%m.%Y}",
+      "tooltip": false
+  
+    }
+  }
+  
+  // vim:ft=jsonc
